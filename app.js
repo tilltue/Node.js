@@ -14,7 +14,8 @@ app.configure('production', function(){
 });
 
 require('./routes/index')(app);
-require('./routes/comment')(app);
+//require('./routes/comment')(app);
+require('./routes/route_news')(app);
 
 app.listen(5000, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);

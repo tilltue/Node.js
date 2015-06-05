@@ -1,0 +1,2 @@
+~/getNews/:newsId
+- newsId 이후의 뉴스들을 반환하는 restapi
