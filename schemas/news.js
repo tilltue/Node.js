@@ -10,4 +10,12 @@ var News = new mongoose.Schema({
 	link_url : String
 });
 
-module.exports = News;
+var NewsContents = new mongoose.Schema({
+	news_id : String,
+	title : String,
+	description : String,
+	ranks : [{rankcode:String,title:String,job_class:String,cards:[{dic:{}}]}]
+});
+
+module.exports.News = News;
+module.exports.NewsContents = NewsContents;
