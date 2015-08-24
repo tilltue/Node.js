@@ -1,10 +1,13 @@
 var Iconv  = require('iconv').Iconv;
 var MongooseNewsModel = require('../../data/models/news_model');
+var url = require('url');
 
 function getNews(req, res, next){
 	console.log('getNews!!');
-	console.log(req.params.newsId);
-	MongooseNewsModel.newsModel.find({"news_id":{ $lt : req.params.newsId} }, function(err, newsJson) {
+	var query = url.parse(req.url, true).query;
+  	console.log('get query = ', query)
+  	newsId = query.newsId;
+	MongooseNewsModel.newsModel.find({"news_id":{ $gt : query.newsId} }, function(err, newsJson) {
 		console.log('find!!');
 		if( err ){
 			console.log('error');
