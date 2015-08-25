@@ -6,8 +6,10 @@ function getNews(req, res, next){
 	console.log('getNews!!');
 	var query = url.parse(req.url, true).query;
   	console.log('get query = ', query)
-  	newsId = query.newsId;
-	MongooseNewsModel.newsModel.find({"news_id":{ $gt : query.newsId} }, function(err, newsJson) {
+  	sDate = query.s_date;
+  	eDate = query.e_date;
+  	count = query.count;
+	MongooseNewsModel.newsModel.find({"date":{ $gt : sDate, $lt : eDate } }, function(err, newsJson) {
 		console.log('find!!');
 		if( err ){
 			console.log('error');
@@ -22,7 +24,7 @@ function getNews(req, res, next){
     	res.write(JSON.stringify(newsJson));
     	res.end();
 		return next();
-	});
+	}).sort({date:-1}).limit(count);
 }
 
 function getNewsContents(req, res, next){
