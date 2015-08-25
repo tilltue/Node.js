@@ -8,8 +8,9 @@ function getNews(req, res, next){
   	console.log('get query = ', query)
   	sDate = query.s_date;
   	eDate = query.e_date;
+  	lastNewsId = query.news_id;
   	count = query.count;
-	MongooseNewsModel.newsModel.find({"date":{ $gt : sDate, $lt : eDate } }, function(err, newsJson) {
+	MongooseNewsModel.newsModel.find({ $and: [{"date":{ $gte :sDate, $lt : eDate }},{"news_id":{ $gt : lastNewsId }}] }, function(err, newsJson) {
 		console.log('find!!');
 		if( err ){
 			console.log('error');
