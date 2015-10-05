@@ -3,6 +3,7 @@ var app = module.exports = express.createServer();
 
 app.configure(function(){
   app.use(app.router);
+  app.use(express.static(__dirname + '/html/resource'));
 });
 
 app.configure('development', function(){
@@ -16,6 +17,7 @@ app.configure('production', function(){
 require('./routes/index')(app);
 //require('./routes/comment')(app);
 require('./routes/route_news')(app);
+require('./routes/route_web')(app);
 
 app.listen(3000, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
