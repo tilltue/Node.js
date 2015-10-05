@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 
 var News = new mongoose.Schema({
+	news_intId : Number,
 	news_id : String,
 	type : String,
 	date : String,
