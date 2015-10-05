@@ -19,6 +19,6 @@ require('./routes/index')(app);
 require('./routes/route_news')(app);
 require('./routes/route_web')(app);
 
-app.listen(5000, function(){
+app.listen(3000, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
 });
