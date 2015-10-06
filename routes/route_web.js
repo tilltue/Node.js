@@ -1,7 +1,7 @@
 var Iconv  = require('iconv').Iconv;
 var url = require('url');
 var fs = require('fs');
-var prePath = '/home/tilltue/Git/Node.js/html/'
+var prePath = '/home/tilltue/PreGit/Node.js/html/'
 module.exports = function(app) {
 	app.get('/webNews',function(req,res){
 		var query = url.parse(req.url, true).query;
