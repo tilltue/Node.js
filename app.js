@@ -1,5 +1,7 @@
+global.config = require('./config');
 var express = require('express');
 var app = module.exports = express.createServer();
+var serverport = global.config.server.serverport;
 
 app.configure(function(){
   app.use(app.router);
@@ -15,10 +17,9 @@ app.configure('production', function(){
 });
 
 require('./routes/index')(app);
-//require('./routes/comment')(app);
 require('./routes/route_news')(app);
 require('./routes/route_web')(app);
 
-app.listen(5000, function(){
+app.listen(serverport, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
 });
