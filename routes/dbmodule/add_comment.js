@@ -18,8 +18,9 @@ function addComment(req, res, next){
 		}	
 		if( commentJson ){
 			console.log('duplicate comment');
-			res.write('comment duplicate');
+    		res.write('find error');
     		res.end();
+			return next(err);
 		}else{
 			var commentModel = new CommentModel();
 			if( commentModel ){
@@ -30,7 +31,7 @@ function addComment(req, res, next){
 				commentModel.save(function (err) {
     				if (!err)
     					console.log('Success!');
-    				res.write('comment add success');
+    				res.writeHead(200, { 'Content-Type': 'application/json' });
     				res.end();
 				});
 			}else{
